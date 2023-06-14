@@ -1,0 +1,20 @@
+{
+    "tableCol": [
+        {
+            "key": "Title",
+            "label": "Title"
+        },
+        {
+            "key": "Author",
+            "label": "Author"
+        },
+        {
+            "key": "CreatedAt",
+            "label": "Created Date"
+        },
+        {
+            "key": "Views",
+            "label": "Views"
+        }
+    ]
+}
