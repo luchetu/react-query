@@ -18,7 +18,7 @@ const useCreateJoke = () => {
                 queryClient.invalidateQueries("joke"),
                     notification.success({
                         message: 'Success',
-                        description: `${data?.title} was succefully Created`
+                        description: `${data?.Title} was succefully Created`
                     });
             },
             onError: (error: any) => {

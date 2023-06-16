@@ -3,8 +3,13 @@ import { useMutation, useQueryClient } from "react-query";
 import { Joke } from "../types";
 import { URL } from "../constants";
 import { notification } from 'antd';
+import { useRouter } from "next/router";
+
 
 const useDeleteJoke = () => {
+
+    const router = useRouter()
+
     const queryClient = useQueryClient();
     return useMutation(
         (joke: Joke) =>
@@ -15,8 +20,9 @@ const useDeleteJoke = () => {
                     queryClient.invalidateQueries("joke"),
                     notification.success({
                         message: 'Success',
-                        description: `${data?.title} was succefully deleted`
+                        description: `Successfully Deleted`
                     });
+                router.push('/jokes/list')
             },
             onError: (error: any) => {
                 notification.error({

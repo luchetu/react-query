@@ -67,3 +67,18 @@ body {
   line-height: 16px;
   padding: 0px 16px;
 }
+
+.list-search-input .ant-input {
+  border: 1px solid rgba(146, 148, 151, 0.4) !important;
+  width: 280px;
+  height: 40px;
+}
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+  padding: 10px;
+}

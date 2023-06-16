@@ -9,6 +9,10 @@
             "label": "Author"
         },
         {
+            "key": "Body",
+            "label": "Body"
+        },
+        {
             "key": "CreatedAt",
             "label": "Created Date"
         },

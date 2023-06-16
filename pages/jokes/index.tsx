@@ -1,10 +1,24 @@
 import { DefaultLayout } from "../../template"
-import { Col, Row, Breadcrumb } from "antd";
+import { Col, Row, Breadcrumb, Spin } from "antd";
 import React from "react";
 import Link from "next/link";
 import JokeForm from "../../components/forms/JokeForm";
+import { useRouter } from "next/router";
+import { useJoke } from "../../hooks";
+import { LoadingOutlined } from "@ant-design/icons";
+
+
+const loadingIcon = <LoadingOutlined style={{ fontSize: 40 }} spin />;
+
 
 const EditJoke = () => {
+
+    const router = useRouter();
+
+    const { id } = router.query;
+
+    const { data: joke, isLoading } = useJoke(id);
+
     return (
         <DefaultLayout
             title="Jokes"
@@ -18,11 +32,15 @@ const EditJoke = () => {
             }
             sideMenuCollapsed={true}
         >
-            <Row justify="center" align="middle">
-                <Col span={24}>
-                    <JokeForm />
-                </Col>
-            </Row>
+            <Spin indicator={loadingIcon} spinning={id ? isLoading : false}>
+                <Row justify="center" align="middle">
+                    <Col span={24}>
+
+                        <JokeForm joke={joke} />
+
+                    </Col>
+                </Row>
+            </Spin>
         </DefaultLayout>
     );
 };

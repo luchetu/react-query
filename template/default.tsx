@@ -1,26 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
     UnorderedListOutlined,
-    ReadOutlined,
-    WindowsOutlined,
-    VideoCameraAddOutlined,
-    VideoCameraOutlined,
     MailOutlined,
     BellFilled,
-    AppstoreAddOutlined,
-    FileAddOutlined,
     MenuUnfoldOutlined,
     DownOutlined,
     RightOutlined,
     SmileOutlined,
-    PlusOutlined
+    PlusOutlined,
+    LogoutOutlined
 } from '@ant-design/icons';
-import { Button, Layout, Menu, Breadcrumb, Typography, Badge, Col, Row, Space } from 'antd';
+import { MdOutlineNightlightRound } from 'react-icons/md';
+import { WiDaySunny } from 'react-icons/wi';
+import { Button, Layout, Menu, Breadcrumb, Badge, Col, Row } from 'antd';
 import Image from 'next/image'
 import { useState } from 'react';
 import type { MenuProps, MenuTheme } from 'antd/es/menu';
-import { boolean } from 'yup';
 import { useRouter } from "next/router";
+import { useStore } from '../store/useStore';
+
 
 interface defaultLayoutProps {
     title: string
@@ -55,10 +53,21 @@ const DefaultLayout: React.FC<defaultLayoutProps> = ({ children, breadCrumbs }) 
         getItem('Jokes', 'jokes', <SmileOutlined />, [
             getItem('List Jokes', '/jokes/list', <UnorderedListOutlined />),
             getItem('Add Joke', '/jokes/', <PlusOutlined />),
-        ])
-    ];
+        ]),
+        getItem('Logout', 'logout', <LogoutOutlined />)
+    ]
+
+    const clearToken = useStore(state => state.clearToken)
+    const toggleMode = useStore(state => state.toggleMode)
+    const mode = useStore(state => state.mode)
+
 
     const onClick: MenuProps['onClick'] = (e) => {
+
+        if (e.key === "logout") {
+            clearToken()
+            return router.push("/login/login");
+        }
         return router.push(e.key);
     };
 
@@ -109,17 +118,12 @@ const DefaultLayout: React.FC<defaultLayoutProps> = ({ children, breadCrumbs }) 
 
                         <Col style={{ display: "flex", justifyContent: "flex-end", }} span={24}>
                             <div style={{ display: "flex", justifyContent: "space-around", width: "100px", marginRight: "40px", alignItems: "center", margin: "20px" }}>
-
-                                <Badge count={6} dot>
-                                    <MailOutlined
-                                        style={{ fontSize: 24 }}
-                                    />
-                                </Badge>
-                                <Badge count={6}>
-                                    <BellFilled
-                                        style={{ fontSize: 24 }}
-                                    />
-                                </Badge>
+                                <div>
+                                    {mode === "Light" ? <MdOutlineNightlightRound style={{ fontSize: 25 }} onClick={toggleMode} />
+                                        :
+                                        <WiDaySunny style={{ fontSize: 30, color: "black" }} onClick={toggleMode} />
+                                    }
+                                </div>
 
                             </div>
                         </Col>

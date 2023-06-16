@@ -2,23 +2,22 @@ import React, { useEffect } from 'react'
 import Head from 'next/head';
 import DefaultLayout from '../template/default';
 import { Breadcrumb } from 'antd';
-import { useRouter } from 'next/router';
-import { useSelector } from 'react-redux';
-import { selectCurrentToken } from '../utils/redux/slice/auth/authSlice';
-import Link from "next/link"
+import Link from "next/link";
+import { useStore } from '../store/useStore';
 
 
-const index = () => {
 
-  // const token = useSelector(selectCurrentToken);
-  // const router = useRouter();
+const Index: React.FC = () => {
 
-  // useEffect(() => {
-  //   if (!token) {
-  //     // Redirect to the login page on the client-side
-  //     window.location.href = '/login/login';
-  //   }
-  // }, [token]);
+  const token = useStore(state => state.token);
+  useEffect(() => {
+    if (!token) {
+      // Redirect to the login page on the client-side
+      window.location.href = '/login/login';
+    }
+  }, [token]);
+
+
 
   return (
     <>
@@ -46,4 +45,4 @@ const index = () => {
 
 }
 
-export default index
+export default Index
