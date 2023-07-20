@@ -1,0 +1,252 @@
+{
+    "formFields": {
+        "steps": [
+            {
+                "title": "Case Information",
+                "key": "step001",
+                "fields": [
+                    {
+                        "name": "caseNumber",
+                        "label": "Case Number",
+                        "type": "text",
+                        "required": true,
+                        "span": 8,
+                        "rules": {
+                            "required": true,
+                            "message": "Please enter a case number"
+                        }
+                    },
+                    {
+                        "name": "caseTitle",
+                        "label": "Case Title",
+                        "type": "text",
+                        "span": 8,
+                        "required": true,
+                        "rules": {
+                            "required": true,
+                            "message": "Please enter a case title"
+                        }
+                    },
+                    {
+                        "name": "caseType",
+                        "label": "Case Type",
+                        "type": "select",
+                        "required": true,
+                        "span": 8,
+                        "options": [
+                            "Civil",
+                            "Criminal",
+                            "Family"
+                        ],
+                        "rules": {
+                            "required": true,
+                            "message": "Please select a case type"
+                        }
+                    },
+                    {
+                        "name": "partiesInvolved",
+                        "label": "Parties Involved",
+                        "type": "select",
+                        "required": true,
+                        "span": 8,
+                        "options": [
+                            "Plaintiff",
+                            "Defendant",
+                            "Witness",
+                            "Judge",
+                            "Lawyer"
+                        ],
+                        "rules": {
+                            "required": true,
+                            "message": "Please select at least one party involved"
+                        }
+                    },
+                    {
+                        "name": "caseStatus",
+                        "label": "Case Status",
+                        "required": true,
+                        "type": "select",
+                        "span": 8,
+                        "options": [
+                            "Open",
+                            "Closed",
+                            "Pending"
+                        ],
+                        "rules": {
+                            "required": true,
+                            "message": "Please select a case status"
+                        }
+                    },
+                    {
+                        "name": "deadlines",
+                        "label": "Deadlines",
+                        "type": "dateTime",
+                        "required": true,
+                        "span": 8,
+                        "rules": {
+                            "required": true,
+                            "message": "Please provide the deadline"
+                        }
+                    },
+                    {
+                        "name": "caseDescription",
+                        "label": "Case Description",
+                        "type": "textarea",
+                        "required": true,
+                        "span": 24,
+                        "rules": {
+                            "required": true,
+                            "message": "Please Enter the Description"
+                        }
+                    },
+                    {
+                        "name": "caseNotes",
+                        "label": "Case Notes",
+                        "type": "textarea",
+                        "required": true,
+                        "span": 24,
+                        "rules": {
+                            "required": true,
+                            "message": "Please provide Notes"
+                        },
+                        "key": "notes"
+                    }
+                ]
+            },
+            {
+                "title": "Case Documents",
+                "key": "step003",
+                "isDynamic": true,
+                "required": true,
+                "btnLabel": "Add Another Case Contact",
+                "fields": [
+                    {
+                        "name": "title",
+                        "label": "Title",
+                        "type": "text",
+                        "span": 12
+                    },
+                    {
+                        "name": "meta",
+                        "label": "Meta Data",
+                        "type": "text",
+                        "span": 12
+                    },
+                    {
+                        "rules": {
+                            "cropAspectRatio": 1,
+                            "required": true,
+                            "crop": true,
+                            "accept": ".jpg,.png,.jpeg"
+                        },
+                        "label": "Case Documents",
+                        "name": "documents",
+                        "type": "file",
+                        "span": 24,
+                        "render": {
+                            "as": "image"
+                        },
+                        "key": "document.photo.attachment"
+                    }
+                ]
+            },
+            {
+                "title": "Case Contacts",
+                "isDynamic": true,
+                "btnLabel": "Add Another Case Contact",
+                "key": "step004",
+                "required": true,
+                "fields": [
+                    {
+                        "name": "contactName",
+                        "label": "Contact Name",
+                        "span": 24,
+                        "type": "text",
+                        "rules": {
+                            "required": true,
+                            "message": "Please provide Case contacts"
+                        }
+                    },
+                    {
+                        "name": "contactPhoneNumber",
+                        "label": "Contact Phone Number",
+                        "span": 12,
+                        "type": "text",
+                        "rules": {
+                            "required": true,
+                            "message": "Please provide Case contacts"
+                        }
+                    },
+                    {
+                        "name": "contactEmail",
+                        "label": "Contact Email",
+                        "span": 12,
+                        "type": "text",
+                        "rules": {}
+                    }
+                ]
+            },
+            {
+                "title": "Court Details",
+                "key": "step005",
+                "required": true,
+                "fields": [
+                    {
+                        "name": "court",
+                        "label": "Court",
+                        "type": "text",
+                        "span": 12,
+                        "rules": {
+                            "required": true,
+                            "message": "Please provide Case contacts"
+                        }
+                    },
+                    {
+                        "name": "courtLocation",
+                        "label": "Court Location",
+                        "required": true,
+                        "type": "text",
+                        "span": 12,
+                        "rules": {
+                            "required": true,
+                            "message": "Please provide Case contacts"
+                        }
+                    },
+                    {
+                        "name": "judge",
+                        "label": "Judge Name",
+                        "type": "text",
+                        "required": true,
+                        "span": 24,
+                        "rules": {
+                            "required": true,
+                            "message": "Please provide Case contacts"
+                        }
+                    },
+                    {
+                        "name": "dateOfHearing",
+                        "label": "Date of Hearing",
+                        "required": true,
+                        "type": "dateTime",
+                        "span": 12,
+                        "rules": {
+                            "required": true,
+                            "message": "Please provide Case contacts"
+                        }
+                    },
+                    {
+                        "name": "dateOfTrial",
+                        "label": "Date of Trial",
+                        "required": true,
+                        "type": "dateTime",
+                        "span": 12,
+                        "rules": {
+                            "required": true,
+                            "message": "Please provide Case contacts"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

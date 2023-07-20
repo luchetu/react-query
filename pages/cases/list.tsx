@@ -7,20 +7,20 @@ import ListJokes from "../../components/lists/ListJokes";
 const ListPage = () => {
     return (
         <DefaultLayout
-            title="Jokes"
+            title="Case Management"
             breadCrumbs={
                 <>
                     <Breadcrumb.Item>
-                        <Link href="/">Jokes</Link>
+                        <Link href="/">Dashboard</Link>
                     </Breadcrumb.Item>
-                    <Breadcrumb.Item>Jokes</Breadcrumb.Item>
+                    <Breadcrumb.Item>Cases Management</Breadcrumb.Item>
                 </>
             }
             sideMenuCollapsed={true}
         >
             <Row justify="center" align="middle">
                 <Col span={24}>
-                    <ListJokes />
+
                 </Col>
             </Row>
         </DefaultLayout>

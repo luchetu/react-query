@@ -2,32 +2,29 @@ import { DefaultLayout } from "../../template"
 import { Col, Row, Breadcrumb, Spin } from "antd";
 import React from "react";
 import Link from "next/link";
-import JokeForm from "../../components/forms/JokeForm";
+import CaseForm from "../../components/forms/CaseForm";
 import { useRouter } from "next/router";
-import { useJoke } from "../../hooks";
 import { LoadingOutlined } from "@ant-design/icons";
 
 
 const loadingIcon = <LoadingOutlined style={{ fontSize: 40 }} spin />;
 
 
-const EditJoke = () => {
+const AddPage = () => {
 
     const router = useRouter();
 
     const { id } = router.query;
 
-    const { data: joke, isLoading } = useJoke(id);
-
     return (
         <DefaultLayout
-            title="Jokes"
+            title="Cases"
             breadCrumbs={
                 <>
                     <Breadcrumb.Item>
-                        <Link href="/jokes/list">Jokes List</Link>
+                        <Link href="/cases/list">Cases List</Link>
                     </Breadcrumb.Item>
-                    <Breadcrumb.Item>Jokes</Breadcrumb.Item>
+                    <Breadcrumb.Item>Cases</Breadcrumb.Item>
                 </>
             }
             sideMenuCollapsed={true}
@@ -36,7 +33,7 @@ const EditJoke = () => {
                 <Row justify="center" align="middle">
                     <Col span={24}>
 
-                        <JokeForm joke={joke} />
+                        <CaseForm />
 
                     </Col>
                 </Row>
@@ -45,4 +42,4 @@ const EditJoke = () => {
     );
 };
 
-export default EditJoke;
+export default AddPage;

@@ -3,26 +3,16 @@ import Head from 'next/head';
 import DefaultLayout from '../template/default';
 import { Breadcrumb } from 'antd';
 import Link from "next/link";
-import { useStore } from '../store/useStore';
+import { useStore } from '../store/store.js';
 
 
 
 const Index: React.FC = () => {
 
-  const token = useStore(state => state.token);
-  useEffect(() => {
-    if (!token) {
-      // Redirect to the login page on the client-side
-      window.location.href = '/login/login';
-    }
-  }, [token]);
-
-
-
   return (
     <>
       <Head>
-        <title>KMS</title>
+        <title>LByte</title>
 
       </Head>
       <DefaultLayout

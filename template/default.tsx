@@ -1,14 +1,22 @@
 import React, { useEffect } from 'react'
 import {
     UnorderedListOutlined,
-    MailOutlined,
-    BellFilled,
     MenuUnfoldOutlined,
     DownOutlined,
     RightOutlined,
-    SmileOutlined,
+    DatabaseOutlined,
     PlusOutlined,
-    LogoutOutlined
+    FolderOpenOutlined,
+    DollarOutlined,
+    FileSyncOutlined,
+    BarChartOutlined,
+    ApartmentOutlined,
+    UsergroupAddOutlined,
+    UserAddOutlined,
+    UserOutlined,
+    ToolOutlined,
+    UnlockOutlined,
+    TranslationOutlined
 } from '@ant-design/icons';
 import { MdOutlineNightlightRound } from 'react-icons/md';
 import { WiDaySunny } from 'react-icons/wi';
@@ -17,7 +25,6 @@ import Image from 'next/image'
 import { useState } from 'react';
 import type { MenuProps, MenuTheme } from 'antd/es/menu';
 import { useRouter } from "next/router";
-import { useStore } from '../store/useStore';
 
 
 interface defaultLayoutProps {
@@ -48,28 +55,51 @@ const DefaultLayout: React.FC<defaultLayoutProps> = ({ children, breadCrumbs }) 
         } as MenuItem;
     }
 
-
     const sidebarItems: MenuItem[] = [
-        getItem('Jokes', 'jokes', <SmileOutlined />, [
-            getItem('List Jokes', '/jokes/list', <UnorderedListOutlined />),
-            getItem('Add Joke', '/jokes/', <PlusOutlined />),
+        getItem('Clients', 'clients', <ApartmentOutlined />, [
+            getItem('Client Management', '/clients/list', <UnorderedListOutlined />),
+            getItem('Add Corporate', '/clients/corporate', <PlusOutlined />),
+            getItem('Add Individual', '/clients/individual', <PlusOutlined />),
         ]),
-        getItem('Logout', 'logout', <LogoutOutlined />)
+        getItem('Cases', 'cases', <FolderOpenOutlined />, [
+            getItem('Case Management', '/cases/list', <UnorderedListOutlined />),
+            getItem('Add Case', '/cases/', <PlusOutlined />),
+        ]),
+        getItem('Appointments', 'appointments', <TranslationOutlined />, [
+            getItem('List', '/appointments/list', <UnorderedListOutlined />),
+            getItem('Book', '/appointments/book', <PlusOutlined />),
+        ]),
+        getItem('Documents', 'documents', <DatabaseOutlined />, [
+            getItem('Docs Management', '/docs/list', <UnorderedListOutlined />),
+            getItem('Add Document', '/docs/', <PlusOutlined />),
+        ]),
+        getItem('Bills', 'bills', <DollarOutlined />, [
+            getItem('Bill Management', '/bills/list', <UnorderedListOutlined />),
+            getItem('Add Bill', '/bills/', <PlusOutlined />),
+            getItem('Invoice', '/bills/invoice/', <FileSyncOutlined />),
+        ]),
+        getItem('Users Management', 'users', <UsergroupAddOutlined />, [
+            getItem('Users', 'users', <UserOutlined />, [
+                getItem('List Users', 'users/list', <UnorderedListOutlined />),
+                getItem('Add User', 'users/users', <UserAddOutlined />),
+            ]),
+            getItem('Roles', 'roles', <ToolOutlined />, [
+                getItem('List Roles', 'roles/list', <UnorderedListOutlined />),
+                getItem('Add Role', 'roles/roles', <PlusOutlined />),
+            ]),
+            getItem('Permissions', 'permissions', <UnlockOutlined />, [
+                getItem('List Permissions', 'permissions/list', <UnorderedListOutlined />),
+                getItem('Add Permission', 'permissions/permissions', <PlusOutlined />),
+            ]),]),
+        getItem('Reports', 'reports', <BarChartOutlined />)
     ]
-
-    const clearToken = useStore(state => state.clearToken)
-    const toggleMode = useStore(state => state.toggleMode)
-    const mode = useStore(state => state.mode)
-
 
     const onClick: MenuProps['onClick'] = (e) => {
 
-        if (e.key === "logout") {
-            clearToken()
-            return router.push("/login/login");
-        }
         return router.push(e.key);
     };
+
+    const modeDark = "Light";
 
     return (
         <Layout>
@@ -100,7 +130,7 @@ const DefaultLayout: React.FC<defaultLayoutProps> = ({ children, breadCrumbs }) 
                     style={{ height: '100vh', }}
                     className="menu-items"
                     theme="light"
-                    mode="inline"
+                    mode="vertical"
                     defaultSelectedKeys={['categories']}
                     items={sidebarItems}
                     expandIcon={<DownOutlined />}
@@ -119,9 +149,9 @@ const DefaultLayout: React.FC<defaultLayoutProps> = ({ children, breadCrumbs }) 
                         <Col style={{ display: "flex", justifyContent: "flex-end", }} span={24}>
                             <div style={{ display: "flex", justifyContent: "space-around", width: "100px", marginRight: "40px", alignItems: "center", margin: "20px" }}>
                                 <div>
-                                    {mode === "Light" ? <MdOutlineNightlightRound style={{ fontSize: 25 }} onClick={toggleMode} />
+                                    {modeDark === "Light" ? <MdOutlineNightlightRound style={{ fontSize: 25 }} />
                                         :
-                                        <WiDaySunny style={{ fontSize: 30, color: "black" }} onClick={toggleMode} />
+                                        <WiDaySunny style={{ fontSize: 30, color: "black" }} />
                                     }
                                 </div>
 

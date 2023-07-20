@@ -1,0 +1,143 @@
+{
+    "steps": [
+        {
+            "title": "Billing Information",
+            "fields": [
+                {
+                    "name": "billingId",
+                    "label": "Billing ID",
+                    "type": "text",
+                    "required": true,
+                    "rules": [
+                        "required"
+                    ]
+                },
+                {
+                    "name": "caseId",
+                    "label": "Case ID",
+                    "type": "text",
+                    "required": true,
+                    "rules": [
+                        "required"
+                    ]
+                },
+                {
+                    "name": "timeEntries",
+                    "label": "Time Entries",
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "timestamp": {
+                                "type": "string"
+                            },
+                            "duration": {
+                                "type": "number"
+                            },
+                            "description": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "expenseEntries",
+                    "label": "Expense Entries",
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "timestamp": {
+                                "type": "string"
+                            },
+                            "amount": {
+                                "type": "number"
+                            },
+                            "description": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "invoiceId",
+                    "label": "Invoice ID",
+                    "type": "text"
+                },
+                {
+                    "name": "paymentStatus",
+                    "label": "Payment Status",
+                    "type": "select",
+                    "options": [
+                        "Paid",
+                        "Pending",
+                        "Overdue"
+                    ],
+                    "required": true,
+                    "rules": [
+                        "required"
+                    ]
+                },
+                {
+                    "name": "paymentDate",
+                    "label": "Payment Date",
+                    "type": "string"
+                },
+                {
+                    "name": "paymentMethod",
+                    "label": "Payment Method",
+                    "type": "select",
+                    "options": [
+                        "Cash",
+                        "Credit Card",
+                        "Bank Transfer"
+                    ],
+                    "required": true,
+                    "rules": [
+                        "required"
+                    ]
+                },
+                {
+                    "name": "clientVendorInformation",
+                    "label": "Client/Vendor Information",
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        },
+                        "contactInformation": {
+                            "type": "string"
+                        },
+                        "billingAddress": {
+                            "type": "string"
+                        }
+                    }
+                },
+                {
+                    "name": "amountDue",
+                    "label": "Amount Due",
+                    "type": "number"
+                },
+                {
+                    "name": "paymentHistory",
+                    "label": "Payment History",
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "paymentDate": {
+                                "type": "string"
+                            },
+                            "amount": {
+                                "type": "number"
+                            },
+                            "paymentMethod": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

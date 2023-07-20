@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Col } from 'antd'
-import { useStore } from '../../store/useStore';
+import { useStore } from '../../store/store.js';
 import cryptoRandomString from "crypto-random-string";
 import { useRouter } from "next/router";
 

@@ -1,0 +1,160 @@
+{
+    "steps": [
+        {
+            "title": "Document Information",
+            "fields": [
+                {
+                    "name": "documentId",
+                    "label": "Document ID",
+                    "type": "text",
+                    "required": true,
+                    "rules": [
+                        "required"
+                    ]
+                },
+                {
+                    "name": "documentName",
+                    "label": "Document Name",
+                    "type": "text",
+                    "required": true,
+                    "rules": [
+                        "required"
+                    ]
+                },
+                {
+                    "name": "documentType",
+                    "label": "Document Type",
+                    "type": "select",
+                    "options": [
+                        "Contract",
+                        "Pleading",
+                        "Discovery Material"
+                    ],
+                    "required": true,
+                    "rules": [
+                        "required"
+                    ]
+                },
+                {
+                    "name": "documentContent",
+                    "label": "Document Content",
+                    "type": "textarea"
+                },
+                {
+                    "name": "caseId",
+                    "label": "Case ID",
+                    "type": "text",
+                    "required": true,
+                    "rules": [
+                        "required"
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Version History",
+            "fields": [
+                {
+                    "name": "versionHistory",
+                    "label": "Version History",
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "version": {
+                                "type": "number"
+                            },
+                            "timestamp": {
+                                "type": "string"
+                            },
+                            "metadata": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "title": "Access Control",
+            "fields": [
+                {
+                    "name": "accessControl",
+                    "label": "Access Control",
+                    "type": "object",
+                    "properties": {
+                        "users": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "groups": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "title": "Searchable Metadata",
+            "fields": [
+                {
+                    "name": "searchableMetadata",
+                    "label": "Searchable Metadata",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            ]
+        },
+        {
+            "title": "Sharing Permissions",
+            "fields": [
+                {
+                    "name": "sharingPermissions",
+                    "label": "Sharing Permissions",
+                    "type": "object",
+                    "properties": {
+                        "users": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "groups": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "title": "Timestamps",
+            "fields": [
+                {
+                    "name": "createdAt",
+                    "label": "Created At",
+                    "type": "string"
+                },
+                {
+                    "name": "updatedAt",
+                    "label": "Updated At",
+                    "type": "string"
+                },
+                {
+                    "name": "lastAccessedAt",
+                    "label": "Last Accessed At",
+                    "type": "string"
+                }
+            ]
+        }
+    ]
+}
